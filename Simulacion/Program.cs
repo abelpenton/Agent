@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OverloadedHarbor;
+using System;
 
 namespace Simulacion
 {
@@ -10,6 +7,9 @@ namespace Simulacion
     {
         static void Main(string[] args)
         {
+            var result = new OverloadHarbor(100.0);
+            result.StartSimulation();
+          
         }
     }
 }

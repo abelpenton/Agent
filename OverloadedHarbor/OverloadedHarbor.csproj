@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3B4BD081-6DF8-4D1E-A149-3D02297F0ED3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Simulacion</RootNamespace>
-    <AssemblyName>Simulacion</AssemblyName>
+    <ProjectGuid>{95199821-104F-45E8-A58A-36F5707CE7AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OverloadedHarbor</RootNamespace>
+    <AssemblyName>OverloadedHarbor</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,17 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Distribution.cs" />
+    <Compile Include="EventPortToHarbor.cs" />
+    <Compile Include="Harbor.cs" />
+    <Compile Include="OverloadHarbor.cs" />
+    <Compile Include="Ship.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OverloadedHarbor\OverloadedHarbor.csproj">
-      <Project>{95199821-104f-45e8-a58a-36f5707ce7ac}</Project>
-      <Name>OverloadedHarbor</Name>
-    </ProjectReference>
+    <Compile Include="TrailerShip.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
