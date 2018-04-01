@@ -117,6 +117,7 @@ namespace OverloadedHarbor
                         var t = t0 - s.arrivePorTime;
                         Console.WriteLine($"Barco {s.shipNumber} espero en el puerto {t/60} horas");
                         m1 += t;
+                        t0 += Distribution.Exp(2) * 60;//añadir al tiempo t0 lo que cuesta llevar el barco actual al muelle vacion
                         GoShip(s.shipNumber, harbors[e.Value.harborNumber]._harborNumber);
                     }
 
