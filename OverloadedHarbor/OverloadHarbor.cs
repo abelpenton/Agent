@@ -39,7 +39,7 @@ namespace OverloadedHarbor
             while (t0 < _totalTime)
             {
 
-                next += (Distribution.Exp(8) * 60);//lleguada del proximo barco
+                next += (Distribution.Exp(8.0) * 60);//lleguada del proximo barco
 
                 var s = new Ship(++c,next);//genera proximo barco
                 ships.Add(s);
@@ -75,10 +75,11 @@ namespace OverloadedHarbor
                     //si el trailer esta en los muelles aumenta el tiempo transcurrido
                     if (trailer.place == "Harbor")
                     {
-                        t0 += (Distribution.Exp(15));
+                        t0 += (Distribution.Exp(1.0)*15);
                     }
                     //llevar el barco
                     t0 += e.Value.Time;
+                    Console.WriteLine(e.Value.name + " ...");
                     GoShip(e.Value.shipNumber, e.Value.harborNumber);
                 }
                 //Evento de Regresar un barco al puerto
@@ -86,22 +87,17 @@ namespace OverloadedHarbor
                 {
                     if (trailer.place == "Port")
                     {
-                        t0 += (Distribution.Exp(15));
+                        t0 += (Distribution.Exp(1.0)*15);
                     }
                     var s1 = GetShip(harbors[e.Value.harborNumber].shipCurrent);
                     //el barco s1 dejara el muelle en el tiempo trancurrido
                     s1.harborleave = t0;
                     //tiempo de regresar el barco al muelle
                     t0 += e.Value.Time;
-
+                    Console.WriteLine(e.Value.name + " ...");
                     trailer.place = "Port";
-                    //todo barco espera su tiempo de carga en un muelle mas el tiempo que espero hasta que lo recogieran
-                    var waiting = s1.loadTime;
-                    if (s1.harborleave > e.Key)
-                    {
-                        waiting += s1.harborleave - e.Key;//si el tiempo en que va a dejar el muelle es mayor que el tiempo en que termino su carga, se le añade a la estancia en el muelle este tiempo
-                    }
-                    Console.WriteLine($"Barco {s1.shipNumber} espero el muelle {e.Value.harborNumber} {waiting / 60} horas");
+                    var waiting = s1.harborleave - s1.harborarrive;
+                    Console.WriteLine($"Barco {s1.shipNumber} espero en el muelle {e.Value.harborNumber} {waiting / 60} horas");
 
                     m += waiting;
 
@@ -119,6 +115,7 @@ namespace OverloadedHarbor
                         m1 += t;
                         t0 += Distribution.Exp(2) * 60;//añadir al tiempo t0 lo que cuesta llevar el barco actual al muelle vacion
                         GoShip(s.shipNumber, harbors[e.Value.harborNumber]._harborNumber);
+                        Console.WriteLine($"Llevar barco {s.shipNumber} al muelle {harbors[e.Value.harborNumber]._harborNumber} ...");
                     }
 
                 }

@@ -8,11 +8,9 @@ namespace OverloadedHarbor
 {
     public class TrailerShip
     {
-        public bool free { get; set;}
         public string place { get; set; }
         public TrailerShip()
         {
-            free = true;
             place = "Port";
         }
     }

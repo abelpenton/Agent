@@ -15,7 +15,12 @@ namespace OverloadedHarbor
         public string name { get; set; }
         public EventPortToHarbor(int ShipNumber, int HarborNumber, int type = 0)
         {
-            if(type == 0)
+            
+            this.type = type;           
+            Time = type == 0 ? Distribution.Exp(2.0)*60 :Distribution.Exp(1.0)*60;
+            shipNumber = ShipNumber;
+            harborNumber = HarborNumber;
+            if (type == 0)
             {
                 name = $"Llevar barco {shipNumber} al muelle {harborNumber}";
             }
@@ -23,10 +28,6 @@ namespace OverloadedHarbor
             {
                 name = $"Llevar barco {ShipNumber} de vuelta al puerto";
             }
-            this.type = type;           
-            Time = type == 0 ? Distribution.Exp(2)*60 :Distribution.Exp(1)*60;
-            shipNumber = ShipNumber;
-            harborNumber = HarborNumber;
         }
     }
 }
