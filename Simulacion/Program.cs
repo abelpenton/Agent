@@ -7,8 +7,8 @@ namespace Simulacion
     {
         static void Main(string[] args)
         {
-            var result = new OverloadHarbor(100.0);
-            result.StartSimulation();
+            var overloadHarbor = new OverloadHarbor(48.0);//numero horas
+            overloadHarbor.StartSimulation();
           
         }
     }

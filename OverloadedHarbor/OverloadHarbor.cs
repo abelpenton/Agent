@@ -18,6 +18,7 @@ namespace OverloadedHarbor
         public double m { get; set; }
         public double m1 { get; set; }
         private double next { get; set; }
+        private double shipsComplete { get; set; }
         private SortedList<double,EventPortToHarbor> events { get; set; }
         public OverloadHarbor(double totalTime)
         {
@@ -55,16 +56,9 @@ namespace OverloadedHarbor
                 //ejecutar el proximo evento, organizado por el tiempo trancurrido (t0)
                 ExecuteEvents();
                
-            }
-
-            var first = events.First();
-            while(first.Key < _totalTime && events.Count > 0)
-            {
-                ExecuteEvents();
-                first = events.First();
-            }
-            Console.WriteLine($"Promedio de Espera en los muelles es de {m/c/60} horas");
-            Console.WriteLine($"Promedio de Espera en los puertos es de {m1 / c / 60} horas");
+            }            
+            Console.WriteLine($"Promedio de Espera en los muelles es de {m/shipsComplete/60} horas");
+            Console.WriteLine($"Promedio de Espera en los puertos es de {m1/shipsComplete/60} horas");
 
 
         }
@@ -112,6 +106,9 @@ namespace OverloadedHarbor
                     m += waiting;
 
                     harbors[e.Value.harborNumber].free = true;
+
+                    //numero de barcos atendidos
+                    shipsComplete++;
 
                     if (port.Count > 0)
                     {
