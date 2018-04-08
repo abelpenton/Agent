@@ -58,7 +58,7 @@ namespace OverloadedHarbor
                
             }            
             Console.WriteLine($"Promedio de Espera en los muelles es de {m/shipsComplete/60} horas");
-            Console.WriteLine($"Promedio de Espera en los puertos es de {m1/shipsComplete/60} horas");
+            Console.WriteLine($"Promedio de Espera en el puerto es de {m1/shipsComplete/60} horas");
 
             var data = ships.GroupBy(x => x.typeShip);
             foreach (var s in data)
@@ -152,12 +152,7 @@ namespace OverloadedHarbor
         }
         private (bool free, Harbor harbor) GetFreeHarbor()
         {
-            foreach (var h in harbors)
-            {
-                if (h.free)
-                    return (true, h);
-            }
-            return (false, null);
+            return (harbors.Any(x => x.free),harbors.FirstOrDefault(x => x.free));            
         }
 
     }

@@ -40,7 +40,7 @@ namespace OverloadedHarbor
             else
             {
                 likehood = r.Next(0, 2);
-                if (likehood == 1)
+                if (likehood == 0)
                     return TypeShip.medium;
                 else
                     return TypeShip.small;
