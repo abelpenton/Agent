@@ -15,13 +15,13 @@ namespace OverloadedHarbor
 
         public static double Normal(double mu, double sigma)
         {
-            var f = Math.Sqrt(-2 * Math.Log(a1.NextDouble(), Math.E)) * Math.Cos(2 * Math.PI * a2.NextDouble());
+            var f = Math.Sqrt(-2.0 * Math.Log( (1-a1.NextDouble()) )) * Math.Sin(2.0 * Math.PI * (1-a2.NextDouble()));
             return Math.Sqrt(sigma) * f + mu;
         }
 
         public static double Exp(double lambda)
         {
-            return (-1.0 / lambda) * (Math.Log(u1.NextDouble(), Math.E));
+            return (-1.0 / lambda) * (Math.Log(u1.NextDouble()));
         }
     }
 }
