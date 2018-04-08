@@ -60,6 +60,11 @@ namespace OverloadedHarbor
             Console.WriteLine($"Promedio de Espera en los muelles es de {m/shipsComplete/60} horas");
             Console.WriteLine($"Promedio de Espera en los puertos es de {m1/shipsComplete/60} horas");
 
+            var data = ships.GroupBy(x => x.typeShip);
+            foreach (var s in data)
+            {
+                Console.WriteLine($"{s.Key} ships: {s.ToList().Count}");
+            }
 
         }
 
